@@ -1,0 +1,7 @@
+#maven excludes
+target/
+
+#eclipse excludes
+.classpath
+.project
+.settings/
