@@ -14,6 +14,7 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
+import org.eclipse.aether.artifact.DefaultArtifact;
 
 /**
  * A small Mojo that only detects the artifacts produced by the build of the current project and writes them out to a
@@ -43,17 +44,12 @@ public class ArtifactSpyMojo extends AbstractMojo {
   @Parameter(required = true, defaultValue = "${project.build.directory}/artifact-spy/artifacts.properties")
   private File outputFile;
 
+  @Override
   public void execute() throws MojoExecutionException, MojoFailureException {
     Properties props = new Properties();
-    Artifact projectArtifact = this.project.getArtifact();
-    if ("pom".equals(projectArtifact.getType())) {
-      projectArtifact.setFile(this.project.getFile());
-    }
-    props.setProperty(projectArtifact.toString(), getProjectRelativePath(projectArtifact.getFile()));
-
-    for (Artifact a : this.project.getAttachedArtifacts()) {
-      props.setProperty(a.toString(), getProjectRelativePath(a.getFile()));
-    }
+    addPomArtifact(props);
+    addProjectArtifact(props);
+    addAttachedArtifacts(props);
 
     FileOutputStream fos = null;
     try {
@@ -70,6 +66,26 @@ public class ArtifactSpyMojo extends AbstractMojo {
         throw new MojoExecutionException("Could not close output stream after writing project artifacts to file: "
             + this.outputFile.getAbsolutePath(), e);
       }
+    }
+  }
+
+  private void addPomArtifact(Properties props) {
+    props.setProperty(
+        new DefaultArtifact(this.project.getGroupId(), this.project.getArtifactId(), "pom", this.project.getVersion())
+            .toString(),
+        getProjectRelativePath(this.project.getFile()));
+  }
+
+  private void addProjectArtifact(Properties props) {
+    Artifact projectArtifact = this.project.getArtifact();
+    if (projectArtifact.getFile() != null) {
+      props.setProperty(projectArtifact.toString(), getProjectRelativePath(projectArtifact.getFile()));
+    }
+  }
+
+  private void addAttachedArtifacts(Properties props) {
+    for (Artifact a : this.project.getAttachedArtifacts()) {
+      props.setProperty(a.toString(), getProjectRelativePath(a.getFile()));
     }
   }
 
