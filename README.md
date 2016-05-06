@@ -69,4 +69,5 @@ The path of the artifact properties file can be adapted using the parameter `out
     #Wed Apr 27 09:08:03 CEST 2016
     com.itemis.maven.plugins\:ump-it-core\:zip\:pack\:0.0.1=target/ump-it-core-resources-0.0.1.zip
     com.itemis.maven.plugins\:ump-it-core\:jar\:0.0.1=target/ump-it-core-0.0.1.jar
+    com.itemis.maven.plugins\:ump-it-core\:pom\:0.0.1=pom.xml
     
