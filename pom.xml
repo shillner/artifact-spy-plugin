@@ -9,7 +9,7 @@
 
   <groupId>com.itemis.maven.plugins</groupId>
   <artifactId>artifact-spy-plugin</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.3-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
   
   <name>Artifact Spy Plugin</name>
