@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.apache.maven.RepositoryUtils;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -79,13 +80,14 @@ public class ArtifactSpyMojo extends AbstractMojo {
   private void addProjectArtifact(Properties props) {
     Artifact projectArtifact = this.project.getArtifact();
     if (projectArtifact.getFile() != null) {
-      props.setProperty(projectArtifact.toString(), getProjectRelativePath(projectArtifact.getFile()));
+      props.setProperty(RepositoryUtils.toArtifact(projectArtifact).toString(),
+          getProjectRelativePath(projectArtifact.getFile()));
     }
   }
 
   private void addAttachedArtifacts(Properties props) {
     for (Artifact a : this.project.getAttachedArtifacts()) {
-      props.setProperty(a.toString(), getProjectRelativePath(a.getFile()));
+      props.setProperty(RepositoryUtils.toArtifact(a).toString(), getProjectRelativePath(a.getFile()));
     }
   }
 
