@@ -42,7 +42,7 @@
     <version.java>1.6</version.java>
     <version.maven>3.3.9</version.maven>
     <version.maven-plugin-plugin>3.4</version.maven-plugin-plugin>
-    <version.unleash-maven-plugin>1.1.1</version.unleash-maven-plugin>
+    <version.unleash-maven-plugin>1.1.2</version.unleash-maven-plugin>
     <version.unleash-scm-provider-git>1.0.1</version.unleash-scm-provider-git>
   </properties>
 
