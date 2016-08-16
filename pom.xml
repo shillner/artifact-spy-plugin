@@ -1,6 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  
+
   <parent>
     <groupId>com.itemis</groupId>
     <artifactId>org-parent</artifactId>
@@ -11,7 +13,7 @@
   <artifactId>artifact-spy-plugin</artifactId>
   <version>1.0.4-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
-  
+
   <name>Artifact Spy Plugin</name>
   <description>A small Maven plugin that spies out all the artifacts that are produced by a Maven build.</description>
   <url>https://github.com/shillner/artifact-spy-plugin</url>
@@ -42,8 +44,8 @@
     <version.java>1.6</version.java>
     <version.maven>3.3.9</version.maven>
     <version.maven-plugin-plugin>3.4</version.maven-plugin-plugin>
-    <version.unleash-maven-plugin>1.1.2</version.unleash-maven-plugin>
-    <version.unleash-scm-provider-git>1.0.1</version.unleash-scm-provider-git>
+    <version.unleash-maven-plugin>2.0.0-SNAPSHOT</version.unleash-maven-plugin>
+    <version.unleash-scm-provider-git>2.0.0-SNAPSHOT</version.unleash-scm-provider-git>
   </properties>
 
   <dependencies>
@@ -103,7 +105,7 @@
       </plugin>
     </plugins>
   </build>
-  
+
   <profiles>
     <profile>
       <id>disable-java8-doclint</id>
