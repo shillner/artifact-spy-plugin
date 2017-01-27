@@ -79,7 +79,7 @@ public class ArtifactSpyMojo extends AbstractMojo {
 
   private void addProjectArtifact(Properties props) {
     Artifact projectArtifact = this.project.getArtifact();
-    if (projectArtifact.getFile() != null) {
+    if (projectArtifact.getFile() != null && projectArtifact.getFile().isFile()) {
       props.setProperty(RepositoryUtils.toArtifact(projectArtifact).toString(),
           getProjectRelativePath(projectArtifact.getFile()));
     }
